@@ -22,10 +22,11 @@ public class SkillController {
 
     @GetMapping("")
     public String index(Model model){
-        List<Skill> skills = new ArrayList<>();
+
         new Skill();
+        List<Skill> skills = new ArrayList<>();
         model.addAttribute("skills", skills);
-        model.addAttribute("skills",skillRepository.findAll());
+        model.addAttribute("skill",skillRepository.findAll());
 
         return"skills/index";
     }
@@ -45,20 +46,20 @@ public class SkillController {
         }else{
             skillRepository.save(newSkill);
 
-            return "redirect:/skills";
+            return "redirect:";
         }
     }
 
-    @GetMapping("view/{SkillId}")
+    @GetMapping("view/{skillId}")
     public String displayViewSkill(Model model, @PathVariable int skillId) {
 
         Optional optSkill = skillRepository.findById((skillId));
         if (optSkill.isPresent()) {
             Skill skill = (Skill) optSkill.get();
-            model.addAttribute("skill", skill);
-            return "employers/view";
+            model.addAttribute("skills", skill);
+            return "skills/view";
         } else {
-            return "redirect:../";
+            return "redirect:..";
         }
     }
 

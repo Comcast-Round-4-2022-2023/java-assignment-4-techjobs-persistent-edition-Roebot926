@@ -22,6 +22,7 @@ public class EmployerController {
 
     @GetMapping("")
     public String index(Model model){
+
         new Employer();
         List<Employer> employers = new ArrayList<>();
         model.addAttribute("employers", employers);
@@ -45,7 +46,7 @@ public class EmployerController {
         }else{
             employerRepository.save(newEmployer);
 
-            return "redirect:/employers";
+            return "redirect:";
         }
     }
 

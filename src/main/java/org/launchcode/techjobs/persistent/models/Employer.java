@@ -12,6 +12,7 @@ import java.util.List;
 public class Employer extends AbstractEntity {
 
     @OneToMany
+    @NotNull
     @JoinColumn(name = "employer_id")
     private List<Job> jobs = new ArrayList<>();
 
