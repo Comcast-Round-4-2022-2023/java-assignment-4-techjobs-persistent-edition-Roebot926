@@ -23,6 +23,7 @@ public class SearchController {
 
     @RequestMapping("")
     public String search(Model model) {
+        model.addAttribute("count",jobRepository.count());
         model.addAttribute("columns", columnChoices);
         return "search";
     }

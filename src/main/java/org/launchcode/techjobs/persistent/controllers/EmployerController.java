@@ -23,9 +23,6 @@ public class EmployerController {
     @GetMapping("")
     public String index(Model model){
 
-        new Employer();
-        List<Employer> employers = new ArrayList<>();
-        model.addAttribute("employers", employers);
         model.addAttribute("employers",employerRepository.findAll());
 
         return"employers/index";
@@ -42,6 +39,7 @@ public class EmployerController {
                                     Errors errors, Model model) {
 
         if (errors.hasErrors()) {
+            model.addAttribute(new Employer());
             return "employers/add";
         }else{
             employerRepository.save(newEmployer);
